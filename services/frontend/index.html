@@ -22,7 +22,18 @@
             <p class="has-text-centered">Uma simples livraria utilizando microservices</p>
         </div>
         <section class="container">
-            <div class="columns books"></div>
+            <div class="column is-12">
+            <div class="field has-addons">
+                <div class="control">
+                    <input class="input" type="text" id="bookId" placeholder="Enter book ID">
+                </div>
+                <div class="control">
+                    <button class="button is-info" id="searchButton">Search</button>
+                </div>
+            </div>
+        </div>
+        <div id="bookDisplay"></div>
+        <div class="columns books"></div>
         </section>
 
         <footer class="footer has-text-centered">Feito com ❤️ na UFMG</footer>

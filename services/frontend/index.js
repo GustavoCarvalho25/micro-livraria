@@ -52,6 +52,36 @@ function calculateShipping(id, cep) {
         });
 }
 
+document.getElementById('searchButton').addEventListener('click', function() {
+    var bookId = document.getElementById('bookId').value;
+    if (bookId) {
+        fetch('http://localhost:3000/product/' + bookId)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then((data) => {
+            var bookDisplay = document.getElementById('bookDisplay');
+            bookDisplay.innerHTML = `
+                <h2>${data.name}</h2>
+                <img
+                        src="${data.photo}"
+                        alt="${data.name}"
+                                            />
+                <p>${data.author}</p>
+                <p>${data.price}</p>
+            `;
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    } else {
+        console.log('Digite um ID de livro correto para pesquisar');
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const books = document.querySelector('.books');
 
